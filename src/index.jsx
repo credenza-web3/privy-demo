@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PrivyProvider } from "@privy-io/react-auth";
+import { polygonAmoy } from 'viem/chains';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,6 +12,13 @@ root.render(
     <PrivyProvider
       appId={import.meta.env.VITE_PRIVY_APP_ID}
       onSuccess={(user) => console.log(`User ${user.id} logged in!`)}
+      config={{
+        embeddedWallets: {
+          createOnLogin: 'users-without-wallets',
+        },
+        defaultChain: polygonAmoy,
+        supportedChains: [polygonAmoy],
+      }}
     >
       <App />
     </PrivyProvider>
