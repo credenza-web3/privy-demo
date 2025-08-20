@@ -47,6 +47,13 @@ function App() {
     initPass()
   }, [embedded]);
 
+  const onLogout = async () => {
+    await logout()
+    await passport.logout();
+    passport.hideNavigation()
+    setPassport(null)
+  }
+
     // Wait until the Privy client is ready before taking any actions
   if (!ready) {
     return null;
@@ -65,7 +72,7 @@ function App() {
               style={{ width: "600px", height: "250px", borderRadius: "6px" }}
             />
             <br />
-            <button onClick={logout} style={{ marginTop: "20px", padding: "12px", backgroundColor: "#069478", color: "#FFF", border: "none", borderRadius: "6px" }}>
+            <button onClick={onLogout} style={{ marginTop: "20px", padding: "12px", backgroundColor: "#069478", color: "#FFF", border: "none", borderRadius: "6px" }}>
               Log Out
             </button>
           </div>
