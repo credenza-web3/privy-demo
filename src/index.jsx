@@ -5,7 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PrivyProvider } from "@privy-io/react-auth";
 import { polygonAmoy } from 'viem/chains';
+import { Buffer } from "buffer";
 
+if (!window.Buffer) {
+  window.Buffer = Buffer;
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
